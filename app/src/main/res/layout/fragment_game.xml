@@ -1,153 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.GameFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/timerTextViewGameFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:textColor="@color/purple_700"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="00:00"/>
+    <data>
+        <variable
+            name="viewModel"
+            type="ru.hivislav.compositiongame.presentation.GameViewModel" />
+    </data>
 
-    <TextView
-        android:id="@+id/sumTextViewGameFragment"
-        style="@style/QuestionTextStyle"
-        android:layout_width="144dp"
-        android:layout_height="144dp"
-        android:background="@drawable/circle_background"
-        app:layout_constraintBottom_toTopOf="@id/visibleNumberTextViewGameFragment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        tools:text="1"/>
-
-    <TextView
-        android:id="@+id/visibleNumberTextViewGameFragment"
-        style="@style/QuestionTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/teal_700"
-        app:layout_constraintBottom_toTopOf="@id/answerOneTextViewGameFragment"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@id/questionNumberTextViewGameFragment"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sumTextViewGameFragment"
-        tools:text="7"/>
-
-    <TextView
-        android:id="@+id/questionNumberTextViewGameFragment"
-        style="@style/QuestionTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/teal_700"
-        android:text="@string/question_mark"
-        app:layout_constraintBottom_toBottomOf="@id/visibleNumberTextViewGameFragment"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/visibleNumberTextViewGameFragment"
-        app:layout_constraintTop_toTopOf="@id/visibleNumberTextViewGameFragment" />
-
-    <TextView
-        android:id="@+id/answerOneTextViewGameFragment"
-        style="@style/AnswerTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_green_light"
-        app:layout_constraintBottom_toTopOf="@id/answerFourTextViewGameFragment"
-        app:layout_constraintEnd_toStartOf="@id/answerFiveTextViewGameFragment"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="1"/>
-
-    <TextView
-        android:id="@+id/answerTwoTextViewGameFragment"
-        style="@style/AnswerTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_orange_light"
-        app:layout_constraintBottom_toTopOf="@id/answerFourTextViewGameFragment"
-        app:layout_constraintEnd_toStartOf="@id/answerSixTextViewGameFragment"
-        app:layout_constraintStart_toEndOf="@id/answerFourTextViewGameFragment"
-        tools:text="2"/>
-
-    <TextView
-        android:id="@+id/answerThreeTextViewGameFragment"
-        style="@style/AnswerTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_purple"
-        app:layout_constraintBottom_toTopOf="@id/answerFourTextViewGameFragment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/answerFiveTextViewGameFragment"
-        tools:text="3"/>
-
-    <TextView
-        android:id="@+id/answerFourTextViewGameFragment"
-        style="@style/AnswerTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/answerFiveTextViewGameFragment"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="4"/>
-
-    <TextView
-        android:id="@+id/answerFiveTextViewGameFragment"
-        style="@style/AnswerTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/answerSixTextViewGameFragment"
-        app:layout_constraintStart_toEndOf="@id/answerFourTextViewGameFragment"
-        tools:text="5"/>
-
-    <TextView
-        android:id="@+id/answerSixTextViewGameFragment"
-        style="@style/AnswerTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_bright"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/answerFiveTextViewGameFragment"
-        tools:text="6"/>
-
-    <TextView
-        android:id="@+id/progressTextViewGameFragment"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/progress_answers"
-        android:layout_margin="16dp"
-        app:layout_constraintVertical_chainStyle="spread"
-        app:layout_constraintTop_toBottomOf="@id/visibleNumberTextViewGameFragment"
-        app:layout_constraintBottom_toTopOf="@id/progressBarGameFragment"/>
+        android:layout_height="match_parent"
+        tools:context=".presentation.GameFragment">
 
-    <ProgressBar
-        android:id="@+id/progressBarGameFragment"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:max="100"
-        android:secondaryProgressTint="@android:color/background_dark"
-        app:layout_constraintBottom_toTopOf="@+id/answerTwoTextViewGameFragment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressTextViewGameFragment" />
+        <TextView
+            android:id="@+id/timerTextViewGameFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textColor="@color/purple_700"
+            android:textSize="24sp"
+            android:text="@{viewModel.formattedTime}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="00:00" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/sumTextViewGameFragment"
+            style="@style/QuestionTextStyle"
+            question="@{viewModel.question.sum}"
+            android:layout_width="144dp"
+            android:layout_height="144dp"
+            android:background="@drawable/circle_background"
+            app:layout_constraintBottom_toTopOf="@id/visibleNumberTextViewGameFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/visibleNumberTextViewGameFragment"
+            style="@style/QuestionTextStyle"
+            visibleNumber="@{viewModel.question.visibleNumber}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/teal_700"
+            app:layout_constraintBottom_toTopOf="@id/answerOneTextViewGameFragment"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@id/questionNumberTextViewGameFragment"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sumTextViewGameFragment"
+            tools:text="7" />
+
+        <TextView
+            android:id="@+id/questionNumberTextViewGameFragment"
+            style="@style/QuestionTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/teal_700"
+            android:text="@string/question_mark"
+            app:layout_constraintBottom_toBottomOf="@id/visibleNumberTextViewGameFragment"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/visibleNumberTextViewGameFragment"
+            app:layout_constraintTop_toTopOf="@id/visibleNumberTextViewGameFragment" />
+
+        <TextView
+            android:id="@+id/answerOneTextViewGameFragment"
+            style="@style/AnswerTextStyle"
+            onOptionClickListener="@{(option) -> viewModel.chooseAnswer(option)}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_green_light"
+            android:text="@{viewModel.question.options.get(0).toString()}"
+            app:layout_constraintBottom_toTopOf="@id/answerFourTextViewGameFragment"
+            app:layout_constraintEnd_toStartOf="@id/answerFiveTextViewGameFragment"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/answerTwoTextViewGameFragment"
+            style="@style/AnswerTextStyle"
+            onOptionClickListener="@{(option) -> viewModel.chooseAnswer(option)}"
+            android:text="@{viewModel.question.options.get(1).toString()}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_orange_light"
+            app:layout_constraintBottom_toTopOf="@id/answerFourTextViewGameFragment"
+            app:layout_constraintEnd_toStartOf="@id/answerSixTextViewGameFragment"
+            app:layout_constraintStart_toEndOf="@id/answerFourTextViewGameFragment"
+            tools:text="2" />
+
+        <TextView
+            android:id="@+id/answerThreeTextViewGameFragment"
+            style="@style/AnswerTextStyle"
+            onOptionClickListener="@{(option) -> viewModel.chooseAnswer(option)}"
+            android:text="@{viewModel.question.options.get(2).toString()}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_purple"
+            app:layout_constraintBottom_toTopOf="@id/answerFourTextViewGameFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/answerFiveTextViewGameFragment"
+            tools:text="3" />
+
+        <TextView
+            android:id="@+id/answerFourTextViewGameFragment"
+            style="@style/AnswerTextStyle"
+            onOptionClickListener="@{(option) -> viewModel.chooseAnswer(option)}"
+            android:text="@{viewModel.question.options.get(3).toString()}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/answerFiveTextViewGameFragment"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="4" />
+
+        <TextView
+            android:id="@+id/answerFiveTextViewGameFragment"
+            style="@style/AnswerTextStyle"
+            onOptionClickListener="@{(option) -> viewModel.chooseAnswer(option)}"
+            android:text="@{viewModel.question.options.get(4).toString()}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_red_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/answerSixTextViewGameFragment"
+            app:layout_constraintStart_toEndOf="@id/answerFourTextViewGameFragment"
+            tools:text="5" />
+
+        <TextView
+            android:id="@+id/answerSixTextViewGameFragment"
+            style="@style/AnswerTextStyle"
+            onOptionClickListener="@{(option) -> viewModel.chooseAnswer(option)}"
+            android:text="@{viewModel.question.options.get(5).toString()}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_bright"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/answerFiveTextViewGameFragment"
+            tools:text="6" />
+
+        <TextView
+            android:id="@+id/progressTextViewGameFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            progressTextColor="@{viewModel.enoughCountOfRightAnswers}"
+            android:text="@{viewModel.progressAnswers}"
+            app:layout_constraintBottom_toTopOf="@id/progressBarGameFragment"
+            app:layout_constraintTop_toBottomOf="@id/visibleNumberTextViewGameFragment"
+            app:layout_constraintVertical_chainStyle="spread" />
+
+        <ProgressBar
+            android:id="@+id/progressBarGameFragment"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:max="100"
+            progressBarColor="@{viewModel.enoughPercentOfRightAnswers}"
+            android:progress="@{viewModel.percentOfRightAnswers}"
+            android:secondaryProgress="@{viewModel.minPercent}"
+            android:secondaryProgressTint="@android:color/background_dark"
+            app:layout_constraintBottom_toTopOf="@+id/answerTwoTextViewGameFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressTextViewGameFragment" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
