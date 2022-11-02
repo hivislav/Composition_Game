@@ -33,7 +33,7 @@ class GameFinishedFragment() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bindViews()
+        binding.gameResult = args.gameResult
         setUpClickListeners()
     }
 
@@ -41,43 +41,6 @@ class GameFinishedFragment() : Fragment() {
         binding.retryButtonGameFinishedFragment.setOnClickListener {
             retryGame()
         }
-    }
-
-    private fun bindViews() {
-        with(binding) {
-            resultImageViewGameFinishedFragment.setImageResource(getSmileResId())
-            requiredAnswersTextViewGameFinishedFragment.text = String.format(
-                getString(R.string.required_score),
-                gameResult.gameSettings.minCountOfRightAnswers.toString()
-            )
-            scoreAnswersTextViewGameFinishedFragment.text = String.format(
-                getString(R.string.score_answers),
-                gameResult.countOfRightAnswers
-            )
-            requiredPercentTextViewGameFinishedFragment.text = String.format(
-                getString(R.string.required_percent),
-                gameResult.gameSettings.minPercentOfRightAnswers
-            )
-            scorePercentTextViewGameFinishedFragment.text = String.format(
-                getString(R.string.score_percent),
-                calculatePercentOfRightAnswers()
-            )
-        }
-    }
-
-    private fun getSmileResId(): Int {
-        return if (gameResult.winner) {
-            R.drawable.ic_smile
-        } else {
-            R.drawable.ic_sad
-        }
-    }
-
-    private fun calculatePercentOfRightAnswers(): Int {
-        if (gameResult.countOfQuestions == 0) {
-            return 0
-        }
-        return ((gameResult.countOfRightAnswers / gameResult.countOfQuestions.toDouble()) * 100).toInt()
     }
 
     override fun onDestroyView() {

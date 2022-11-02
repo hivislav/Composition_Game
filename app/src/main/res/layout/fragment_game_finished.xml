@@ -1,79 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/background_light"
-    tools:context=".presentation.GameFinishedFragment">
 
-    <ImageView
-        android:id="@+id/resultImageViewGameFinishedFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="48dp"
-        android:contentDescription="@string/game_over"
-        app:layout_constraintBottom_toTopOf="@id/requiredAnswersTextViewGameFinishedFragment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/ic_smile" />
+<layout>
 
-    <TextView
-        android:id="@+id/requiredAnswersTextViewGameFinishedFragment"
+    <data>
+        <variable
+            name="gameResult"
+            type="ru.hivislav.compositiongame.domain.entities.GameResult"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/required_score"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@id/scoreAnswersTextViewGameFinishedFragment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"/>
+        android:layout_height="match_parent"
+        android:background="@android:color/background_light"
+        tools:context=".presentation.GameFinishedFragment">
 
-    <TextView
-        android:id="@+id/scoreAnswersTextViewGameFinishedFragment"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/score_answers"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@id/requiredPercentTextViewGameFinishedFragment"
-        app:layout_constraintEnd_toEndOf="@id/requiredAnswersTextViewGameFinishedFragment"
-        app:layout_constraintStart_toStartOf="@id/requiredAnswersTextViewGameFinishedFragment"
-        app:layout_constraintTop_toBottomOf="@id/requiredAnswersTextViewGameFinishedFragment" />
+        <ImageView
+            android:id="@+id/resultImageViewGameFinishedFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="48dp"
+            android:contentDescription="@string/game_over"
+            app:layout_constraintBottom_toTopOf="@id/requiredAnswersTextViewGameFinishedFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            resultImage="@{gameResult}"
+            tools:srcCompat="@drawable/ic_smile" />
 
-    <TextView
-        android:id="@+id/requiredPercentTextViewGameFinishedFragment"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/required_percent"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@id/scorePercentTextViewGameFinishedFragment"
-        app:layout_constraintEnd_toEndOf="@id/requiredAnswersTextViewGameFinishedFragment"
-        app:layout_constraintStart_toStartOf="@id/requiredAnswersTextViewGameFinishedFragment"
-        app:layout_constraintTop_toBottomOf="@id/scoreAnswersTextViewGameFinishedFragment"
-        app:layout_constraintVertical_chainStyle="packed"/>
+        <TextView
+            android:id="@+id/requiredAnswersTextViewGameFinishedFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            requiredAnswers="@{gameResult.gameSettings.minCountOfRightAnswers}"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/scoreAnswersTextViewGameFinishedFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-    <TextView
-        android:id="@+id/scorePercentTextViewGameFinishedFragment"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/score_percent"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/requiredAnswersTextViewGameFinishedFragment"
-        app:layout_constraintStart_toStartOf="@id/requiredAnswersTextViewGameFinishedFragment"
-        app:layout_constraintTop_toBottomOf="@id/requiredPercentTextViewGameFinishedFragment" />
+        <TextView
+            android:id="@+id/scoreAnswersTextViewGameFinishedFragment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            scoreAnswers="@{gameResult.countOfRightAnswers}"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/requiredPercentTextViewGameFinishedFragment"
+            app:layout_constraintEnd_toEndOf="@id/requiredAnswersTextViewGameFinishedFragment"
+            app:layout_constraintStart_toStartOf="@id/requiredAnswersTextViewGameFinishedFragment"
+            app:layout_constraintTop_toBottomOf="@id/requiredAnswersTextViewGameFinishedFragment" />
 
-    <Button
-        android:id="@+id/retryButtonGameFinishedFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/retry"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        <TextView
+            android:id="@+id/requiredPercentTextViewGameFinishedFragment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            requiredPercent="@{gameResult.gameSettings.minPercentOfRightAnswers}"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/scorePercentTextViewGameFinishedFragment"
+            app:layout_constraintEnd_toEndOf="@id/requiredAnswersTextViewGameFinishedFragment"
+            app:layout_constraintStart_toStartOf="@id/requiredAnswersTextViewGameFinishedFragment"
+            app:layout_constraintTop_toBottomOf="@id/scoreAnswersTextViewGameFinishedFragment"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/scorePercentTextViewGameFinishedFragment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            scorePercent="@{gameResult}"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/requiredAnswersTextViewGameFinishedFragment"
+            app:layout_constraintStart_toStartOf="@id/requiredAnswersTextViewGameFinishedFragment"
+            app:layout_constraintTop_toBottomOf="@id/requiredPercentTextViewGameFinishedFragment" />
+
+        <Button
+            android:id="@+id/retryButtonGameFinishedFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/retry"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
